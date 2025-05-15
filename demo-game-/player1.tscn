@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://c784mpv560oi0"]
+
+[ext_resource type="Texture2D" uid="uid://vqsky8mhitqq" path="res://SGQ_Dungeon/characters/main/elf.png" id="1_ng0wg"]
+[ext_resource type="Script" uid="uid://i8unx8rwiwal" path="res://player_1.gd" id="1_pqb02"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqb02"]
+atlas = ExtResource("1_ng0wg")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ytgb6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqb02")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3pafw"]
+radius = 6.0
+height = 16.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_pqb02")
+max_speed = 100
+accel = 50
+friction = 500
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ytgb6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3pafw")
